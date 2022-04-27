@@ -1,66 +1,75 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
+#include <stdlib.h>
+#define tab printf("		");
 char box[10]={'0','1','2','3','4','5','6','7','8','9'};
 void creating_board();
 void marking_board(int, char);
 int check_for_win();
-char userid[10];
-char pass[10];
 int main()
 {
     int choice,player=1,i;
     char mark;
-    printf("UserId: ");
-    scanf("%s",&userid);
-    printf("Password: ");
-    scanf("%s",&pass);
-    if(strcmp(userid,"Manjil")==0  && strcmp(pass,"manjil")==0)
+    if (login()==1)
+    
     {
-	
+    	system("cls");
+	 
     do{
+    	
         creating_board();
         player= (player % 2) ? 1: 2;
+        printf("\n");
 
-        printf("Player %d, enter a number: ",player);
+       tab;  printf("Player %d, enter a number: ",player);
         scanf("%d",&choice);
 
         mark = (player==1) ? 'X' : 'O';
+        system("cls");
         marking_board(choice,mark);
 
         i=check_for_win();
         player++;
+        
 
     }while(i == -1);
 
     creating_board();
+    
 
     if(i==1)
-        printf("Player %d  you have won the game",--player);
-    else
-        printf("<-------Draw------>");
+    {
+	
+      tab;   printf("Player %d  you have won the game",--player);
+  }
+    else{
+	
+      tab;   printf("<-------Draw------>");
+  }
     }
     else
-    printf("Wrong Userid or Password");
-
+    {
+	
+   tab;  printf("Wrong Userid or Password");
+}
 
     return 0;
 }
 void creating_board()
 {
     
-    printf("\n\n\tTic Tac Toe\n\n");
-    printf("Player 1 (X) -- Player 2 (O)\n\n");
-    printf("     |     |     \n");
-    printf(" %c   | %c   | %c   \n",box[1],box[2],box[3]);
-    printf("_____|_____|_____\n");
-    printf("     |     |      \n");
-    printf(" %c   | %c   | %c   \n",box[4],box[5],box[6]);
-    printf("_____|_____|_____\n");
-    printf("     |     |      \n");
-    printf(" %c   | %c   | %c   \n",box[7],box[8],box[9]);
-    printf("_____|_____|_____\n");
-    printf("     |     |      \n");
+    tab; printf("\n\n		**************Tic Tac Toe**************\n\n");
+    tab; printf("Player 1 (X) -- Player 2 (O)\n\n");
+    tab; printf("     |     |     \n");
+    tab; printf(" %c   | %c   | %c   \n",box[1],box[2],box[3]);
+    tab; printf("_____|_____|_____\n");
+    tab; printf("     |     |      \n");
+    tab; printf(" %c   | %c   | %c   \n",box[4],box[5],box[6]);
+    tab; printf("_____|_____|_____\n");
+    tab; printf("     |     |      \n");
+    tab; printf(" %c   | %c   | %c   \n",box[7],box[8],box[9]);
+    tab; printf("     |     |      \n");
 
 
 }
@@ -86,7 +95,7 @@ void marking_board( int choice, char mark)
         box[9]=mark;
     else
     {
-        printf("Invalid move");
+        printf("*******************Invalid move*******************");
     }
 }
 
@@ -120,3 +129,20 @@ int check_for_win()
 
 
 }
+
+
+int login(){
+char userid[10];
+char pass[10];
+printf("\n		***********Login Page:************		");
+printf("\n\n		UserId: ");
+    scanf("%s",&userid);
+    printf("		Password: ");
+    scanf("%s",&pass);
+    
+    if(strcmp(userid,"Manjil")==0  && strcmp(pass,"manjil")==0)
+    	return 1;
+    	else
+    	return 0;
+    }
+    	
